@@ -6,7 +6,7 @@
       </a>
       <div class="flex items-center">
         <a href="/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">Home</a>
-        <a href="" class="ml-6 text-gray-500 hover:text-gray-900 dark:hover:text-white">Sign in</a>
+        <a href="signin" class="ml-6 text-gray-500 hover:text-gray-900 dark:hover:text-white">Sign in</a>
         <a href="" class="ml-6 text-gray-500 hover:text-gray-900 dark:hover:text-white">Sign up</a>
       </div>
     </div>

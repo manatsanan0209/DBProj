@@ -20,4 +20,14 @@ Route::get('signin', function () {
     return view('signin');
 })->name('signin');
 
+Route::get('admin', function () {
+    return view('employee_login');
+})->name('admin');
+
+Route::get('admin/order', function () {
+    return view('adminorder');
+})->name('admin/order');
+
+
+
 Route::post('getfollows', [UserController::class,'getfollows']);
