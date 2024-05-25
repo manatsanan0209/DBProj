@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Routing\Redirector;
 
 class UserController extends Controller
 {
@@ -18,6 +18,72 @@ class UserController extends Controller
         // dd($order_info, $product_info);
         return redirect()->route('follow')->with('order_info', $order_info)->with('product_info', $product_info);
     }
+
+    function login(Request $req)
+    {
+        $data = [
+            "username" => $req->username,
+            "password" => $req->password,
+        ];
+        $user = DB::table('customers')->where('customer_username', $data['username'])->where('customer_password', $data['password'])->first();
+        if ($user) {
+            //store customer_id in session
+            session(['user' => $user]);
+            return redirect()->route('index');
+        } else {
+            // return error message and login page
+            return redirect()->route('signin')->with('error', 'Invalid username or password');
+        }
+    }
+
+    function logout()
+    {
+        session()->forget('user');
+        return redirect()->route('index');
+    }
+
+    function maintain()
+    {
+        if (session('user')) {
+            return view('customer/maintain');
+        } else {
+            return redirect()->route('signin');
+        }
+    }
+
+    function listwaitpayment()
+    {
+        $query = DB::select(
+            'SELECT 
+                products.*, 
+                orders.order_time,
+                stocks.product_price
+            FROM 
+                customers
+            JOIN 
+                orders ON customers.customer_id = orders.customer_id
+            JOIN 
+                payments ON orders.order_id = payments.order_id
+            JOIN 
+                products ON orders.order_id = products.order_id
+            JOIN
+                stocks ON products.product_stock_id = stocks.product_stock_id
+            WHERE 
+                customers.customer_id = :customer_id
+                AND payments.is_paid = 0',
+            ['customer_id' => session('user')->customer_id]
+        );
+        $data = [];
+        foreach ($query as $d) {
+            if (!isset($data[$d->order_id])) {
+                $data[$d->order_id] = [];
+            }
+            $data[$d->order_id][] = $d;
+        }
+
+        return view('customer/waitpayment', compact('data'));
+    }
+
 
     function insert(Request $req)
     {
@@ -33,4 +99,3 @@ class UserController extends Controller
         return redirect()->route('follow');
     }
 }
-

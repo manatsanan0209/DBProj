@@ -9,14 +9,14 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-900">
+<body class="">
     <!-- Navbar -->
   @include('components._navbar')
 
     <!-- Content -->
   <div class="w-3/5 h-max my-5 mx-auto p-2 grid grid-cols-2 gap-2">
-    <a href="/ordernow" class="dark:text-white font-normal text-2xl text-center">Order now</a>
-    <a href="/myorder" class="dark:text-blue-200 font-normal text-2xl text-center">My order</a>
+    <a href="{{ route('waitpayment') }}" class="dark:text-white font-normal text-2xl text-center">Waiting for payment</a>
+    <a href="{{ route('orders') }}" class="dark:text-blue-200 font-normal text-2xl text-center">Orders</a>
     <hr class="border-t-2 border-gray-900 my-4">
     <hr class="border-t-2 border-blue-200 my-4">
   </div>

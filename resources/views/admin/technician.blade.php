@@ -32,8 +32,8 @@
         <!-- Content -->
     
         <div class="w-3/5 h-max mt-20 mx-auto p-2 grid grid-cols-2 gap-2">
-          <a href="customerform" class="dark:text-white font-normal text-2xl text-center">Customer</a>
-          <a href="techform" class="dark:text-blue-200 font-normal text-2xl text-center">Technician</a>
+          <a href="customer" class="dark:text-white font-normal text-2xl text-center">Customer</a>
+          <a href="technician" class="dark:text-blue-200 font-normal text-2xl text-center">Technician</a>
           <hr class="border-t-2 border-gray-900 my-4">
           <hr class="border-t-2 border-blue-200 my-4">
         </div>

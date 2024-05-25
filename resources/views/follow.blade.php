@@ -71,7 +71,7 @@
     </div>
 
     @else
-    <form class="max-w-sm mx-auto my-60" method="POST" action="/getfollows">
+    <form class="max-w-sm mx-auto my-60" method="POST" action="follow">
       @csrf
       <div class="mb-5">
         <label for="order_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Order ID</label>

@@ -17,8 +17,8 @@
 
   <!-- หน้านี้จะมีแต่ออเด้อที่ทำเสร็จแล้ว ตรง Received จะมีอันนี้กับ Sucessful -->
   <div class="w-3/5 h-max my-5 mx-auto p-2 grid grid-cols-2 gap-2">
-    <a href="/worknow" class="dark:text-white font-normal text-2xl text-center">Work now</a>
-    <a href="/mywork" class="dark:text-blue-200 font-normal text-2xl text-center">My work</a>
+  <a href="{{ route('inprogress') }}" class="text-blue-200 font-normal text-2xl text-center">In progress</a>
+    <a href="{{ route('completed') }}" class="text-white font-normal text-2xl text-center">Completed</a>
     <hr class="border-t-2 border-gray-900 my-4">
     <hr class="border-t-2 border-blue-200 my-4">
   </div>
